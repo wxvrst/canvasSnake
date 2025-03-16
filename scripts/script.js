@@ -1,8 +1,8 @@
 //Стандартные переменные и их свойства
 const canvas = document.getElementById('my_canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = innerWidth-32;
-canvas.height = innerHeight-39;
+canvas.width = Math.round(innerWidth/32)*32;
+canvas.height = Math.round(innerHeight/32)*32;
 //Шаг клетки
 var grid=16;
 //Пока оставим это тут
