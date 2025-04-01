@@ -7,6 +7,46 @@ canvas.height = 640;
 var grid=16;
 //Пока оставим это тут
 var count=0;
+let touchStartX = null; // Начальная координата X
+let touchStartY = null; // Начальная координата Y
+
+canvas.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+});
+
+canvas.addEventListener('touchend', function(e) {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // Горизонтальное движение
+        if (deltaX > 0 && snake.dx === 0) {
+            // Свайп вправо
+            snake.dx = grid;
+            snake.dy = 0;
+        } else if (deltaX < 0 && snake.dx === 0) {
+            // Свайп влево
+            snake.dx = -grid;
+            snake.dy = 0;
+        }
+    } else {
+        // Вертикальное движение
+        if (deltaY > 0 && snake.dy === 0) {
+            // Свайп вниз
+            snake.dy = grid;
+            snake.dx = 0;
+        } else if (deltaY < 0 && snake.dy === 0) {
+            // Свайп вверх
+            snake.dy = -grid;
+            snake.dx = 0;
+        }
+    }
+});
+
 //Змейка и её поля
 var snake= {
     //Координаты змейки
