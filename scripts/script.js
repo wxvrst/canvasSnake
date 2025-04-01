@@ -7,6 +7,16 @@ canvas.height = 640;
 var grid=16;
 //Пока оставим это тут
 var count=0;
+
+// Отключаем pull-to-refresh
+document.addEventListener('touchmove', function(e) {
+    // Проверяем, чтобы свайп был вертикальным
+    if (e.touches.length === 1 && e.touches[0].clientY > 0) {
+        e.preventDefault(); // Отменяем стандартное поведение
+    }
+}, { passive: false });
+
+
 let touchStartX = null; // Начальная координата X
 let touchStartY = null; // Начальная координата Y
 
