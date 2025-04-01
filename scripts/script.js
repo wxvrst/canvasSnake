@@ -1,8 +1,8 @@
 //Стандартные переменные и их свойства
 const canvas = document.getElementById('my_canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 640;
-canvas.height = 640;
+canvas.width = Math.floor(window.innerWidth/grid)*grid-grid;
+canvas.height = Math.floor(window.innerHeight/grid)*grid-grid;
 //Шаг клетки
 var grid=16;
 //Пока оставим это тут
@@ -86,7 +86,7 @@ function loop () {
     //Анимация
     requestAnimationFrame(loop);
     //Замедление
-    if(++count<3){return;}
+    if(++count<4){return;}
     //Чистим каунт сразу
     count=0;
     //Очищаем поле
