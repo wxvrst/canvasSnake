@@ -92,7 +92,7 @@ function loop() {
     // Анимация
     requestAnimationFrame(loop);
     // Замедление
-    if (++count < 5) {
+    if (++count < 6) {
         return;
     }
     // Чистим каунт сразу
